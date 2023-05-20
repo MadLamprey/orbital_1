@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/orbital_1/static/css/main.b1db0f8c.css",
+    "main.js": "/orbital_1/static/js/main.dc38b512.js",
+    "static/media/5456.mp4": "/orbital_1/static/media/5456.4e773470411cc3ab388a.mp4",
+    "static/media/5456.png": "/orbital_1/static/media/5456.06e103a50446103655c6.png",
+    "static/media/WhatsApp Image 2023-05-14 at 18.09.26.jpeg": "/orbital_1/static/media/WhatsApp Image 2023-05-14 at 18.09.26.abf38aa82b8ee774c2dc.jpeg",
+    "static/media/WhatsApp Image 2023-05-14 at 12.25.50.jpg": "/orbital_1/static/media/WhatsApp Image 2023-05-14 at 12.25.50.1918474beb3b20a30bd0.jpg",
+    "static/media/ScoreScope_logo.png": "/orbital_1/static/media/ScoreScope_logo.d31310b005f7e7eec9f5.png",
+    "index.html": "/orbital_1/index.html",
+    "main.b1db0f8c.css.map": "/orbital_1/static/css/main.b1db0f8c.css.map",
+    "main.dc38b512.js.map": "/orbital_1/static/js/main.dc38b512.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1db0f8c.css",
+    "static/js/main.dc38b512.js"
+  ]
+}
