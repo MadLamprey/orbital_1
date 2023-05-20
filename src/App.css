@@ -1,38 +1,129 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Wix+Madefor+Display:wght@700&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header {
+  background-color: pink;
   color: white;
+  font-size: x-large;
+  align-content: left;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  background-color: black;
+  color: greenyellow;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.my-button {
+  display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+    font-family: 'Space Mono', monospace;
+}
+
+.my-button:hover {
+  background-color: #0056b3;
+}
+
+.blank {
+  width: 30px
+}
+
+.text-input {
+    padding: 10px;
+    border: 4px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
+    background-color: #0056b3;
+    font-family: 'Space Mono', monospace;
+}
+
+.text-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 3px #007bff;
+  color: white;
+  font-family: 'Space Mono', monospace;
+}
+
+.text-input::placeholder {
+  color: white;
+  font-family: 'Space Mono', monospace;
+}
+
+.left {
+  text-align: left;
+}
+
+.menu-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: black;
+}
+
+.menu-items {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: 50px;
+  font-size: x-large;
+}
+
+.menu-items li {
+  cursor: pointer;
+}
+
+.button_1 {
+  font-size: x-large;
+  font-family: 'Space Mono', monospace;
+  background-color: black;
+  color: greenyellow;
+  cursor: pointer;
+}
+
+.button_1:hover {
+  background-color: grey;
+}
+
+.content {
+  text-align: left;
+}
+
+.image {
+  height: 600px;
+  width: 500px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.video {
+  height: 600px;
+  width: 500px;
+}
+
+.pfp1 {
+  border-radius: 50%;
+  width: 300px;
+  margin-left: 200px;
+}
+
+.pfp2 {
+  border-radius: 50%;
+  width: 300px;
+  margin-right: 200px;
 }
