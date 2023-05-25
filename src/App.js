@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import Home from './Home';
-import Register from './Register';
-import Login from './Login';
-import LandingPage from './LandingPage';
-import About from './About'
-import Team from './Team'
-import Contact from './Contact'
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import LandingPage from './pages/LandingPage';
+import About from './pages/About'
+import Team from './pages/Team'
+import Contact from './pages/Contact'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css'
-import logo from './ScoreScope_logo.png'
-import ZoomableImage from './ZoomableImage';
  
 function App() {
  
@@ -18,7 +16,7 @@ function App() {
       <div>
                                 
             <Routes>
-               <Route path='/' element={<LandingPage/>}/>
+               <Route exact path='/' element={<LandingPage/>}/>
                <Route path='/register' element={<Register/>}/>
                <Route path='/home' element={<Home/>}/>
                <Route path='/login' element={<Login/>}/>
