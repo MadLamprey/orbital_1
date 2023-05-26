@@ -8,7 +8,7 @@ import re
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=['https://scorescope-49a24.web.app'])
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
