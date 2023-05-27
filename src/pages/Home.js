@@ -16,7 +16,7 @@ const Home = () => {
   
     const fetchAccuracy = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/predict');
+        const response = await axios.get('https://flask-server-7slp5aoiia-el.a.run.app/predict');
         setAccuracy(response.data.accuracy);
       } catch (error) {
         console.error(error);
@@ -25,7 +25,7 @@ const Home = () => {
 
     const handlePrediction = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:5000/predict', { question });
+        const response = await axios.post('https://flask-server-7slp5aoiia-el.a.run.app/predict', { question });
         const prediction = response.data.prediction;
         setPrediction(prediction);
       } catch (error) {

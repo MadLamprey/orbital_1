@@ -8,16 +8,8 @@ import re
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app, origins=['https://scorescope-49a24.web.app'])
+CORS(app)
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    if path != "" and os.path.exists("build/" + path):
-        return send_from_directory("build", path)
-    else:
-        return send_from_directory("build", "index.html")
-# Load the data
 df = pd.read_csv("orbital.csv")
 
 # Clean text
