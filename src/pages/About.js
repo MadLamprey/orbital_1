@@ -1,55 +1,84 @@
-import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import logo from './resources/ScoreScope_logo.png';
-import Box from '@mui/material/Box';
-import poster from './resources/5456.png';
-import ReactPlayer from 'react-player';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "./resources/logo_alt.png";
+import Box from "@mui/material/Box";
+import poster from "./resources/5456.png";
+import ReactPlayer from "react-player";
 
 const About = () => {
-    const navigate = useNavigate();
-
-    return(
-        <>
-        <div className="menu-bar">
-      <div className="logo">
-      <Link to='/home'>
-        <img src= {logo} />
-        </Link>
+  return (
+    <>
+      <div className="header">
+        <div className="logo">
+          <Link to="/home">
+            <img src={logo} height="100px" alt="logo" />
+          </Link>
+        </div>
+        <nav class="navbar">
+          <ul>
+            <Link to="/home" class="link">
+              <li>Home</li>
+            </Link>
+            <Link to="/about" class="link">
+              <li>About</li>
+            </Link>
+            <Link to="/team" class="link">
+              <li>The Team</li>
+            </Link>
+            <Link to="/contact" class="link">
+              <li>Contact Us</li>
+            </Link>
+          </ul>
+        </nav>
       </div>
-      <ul className="menu-items">
-        <li><Link to='/home'><button class='button_1'>Home</button></Link></li>
-        <li><Link to='/team'><button class='button_1'>The Team</button></Link></li>
-        <li><Link to='/contact'><button class='button_1'>Contact Us</button></Link></li>
-      </ul>
-    </div> 
-    <hr></hr>
-    <h2>About ScoreScope</h2>
-    <div>
-    <Box 
-     sx={{
-      height: '300px',
-      backgroundColor: 'black',
-      border: '10px dashed grey',
-      alignItems: 'center',
-      display: 'flex',
-      justifyContent: 'center',
-      fontSize: 'x-large',
-      color: 'pink'
-    }}>ScoreScope is a text classification program that aims to analyse past papers for particular modules. Based on a simple text analyser, it studies the questions on the past papers and returns what topics have been tested on most frequently. This enables students who make use of this program to be able to narrow down their syllabus to only a few topics that they can revise in the time leading up to the exam. </Box></div>
-    <br></br>
-    <div>
-      <div class='column'>
-      <h2>Project Poster</h2>
-      <img src={ poster } class='image'/>
+      <hr></hr>
+      <div class="team-box-section">
+        <div class="team-box" position="absolute" left="50%" top="50%">
+          <h2>About ScoreScope</h2>
+        </div>
       </div>
-      <div class='column'>
-        <h2>Project Video</h2>
-        <ReactPlayer url='https://youtu.be/WkZTH5DtQfU' style={{ marginLeft:'120px'}} width='500px' height='600px'/>
+      <div>
+        <div>
+          <Box
+            sx={{
+              height: "200px",
+              border: "4px solid white",
+              alignItems: "center",
+              display: "flex",
+              width: "800px",
+              fontSize: "20px",
+              position: "absolute",
+              left: "25%",
+            }}
+          >
+            ScoreScope is a text classification program that aims to analyse
+            past papers for particular modules. Based on a simple text analyser,
+            it studies the questions on the past papers and returns what topics
+            have been tested on most frequently. This enables students who make
+            use of this program to be able to narrow down their syllabus to only
+            a few topics that they can revise in the time leading up to the
+            exam.{" "}
+          </Box>
+        </div>
+      </div>{" "}
+      <br></br>
+      <div margin={"auto"}>
+        <div class="column">
+          <h2>Project Poster</h2>
+          <img src={poster} class="image" alt="poster" />
+        </div>
+        <div class="column">
+          <h2>Project Video</h2>
+          <ReactPlayer
+            url="https://youtu.be/WkZTH5DtQfU"
+            style={{ marginLeft: "120px" }}
+            width="500px"
+            height="600px"
+          />
+        </div>
       </div>
-    </div>
     </>
-    )
-}
+  );
+};
 
-export default About
+export default About;

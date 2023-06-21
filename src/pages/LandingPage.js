@@ -1,28 +1,52 @@
-import React, { useState } from 'react';
-import { NavLink, Link} from 'react-router-dom';
-import logo from './resources/ScoreScope_logo.png'
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "./resources/logo_alt.png";
 
 const LandingPage = () => {
-    return (
-        <div>
-            <header class='.header'>
-          <img src= {logo}/>
-          </header> 
-          <hr></hr>
-            <div>
-                <h2>Welcome to ScoreScope</h2>
-                <h2>Register or Login to continue</h2>
-            </div>
-            <div>
-            <Link to='/register'>
-                <button class='my-button'>Register</button>
+  return (
+    <div>
+      <div class="header">
+        <img class="logo" src={logo} height="100px" alt="logo" />
+        <nav class="navbar">
+          <ul>
+            <Link to="/home" class="link">
+              <li>Home</li>
             </Link>
-            <Link to='/login'>
-                <button class='my-button'>Login</button>
+            <Link to="/about" class="link">
+              <li>About</li>
             </Link>
-            </div>
+            <Link to="/team" class="link">
+              <li>The Team</li>
+            </Link>
+            <Link to="/contact" class="link">
+              <li>Contact Us</li>
+            </Link>
+          </ul>
+        </nav>
+      </div>
+      <hr></hr>
+      <div class="sec">
+        <div class="left-section">
+          Make the most of your time and resources.
+          <div class="subtext_1">
+            We help you prepare for your exams better.
+          </div>
+          <div class="subtext_2">Register now to get started.</div>
         </div>
-    )
-}
+        <div class="right-section">
+          <Link to="/register">
+            <button class="my-button">Register Now</button>
+          </Link>
+          <div class="subtext_1">Already a registered user?</div>
+          <div class="subtext_2">Log In instead</div>
+          <Link to="/login">
+            <button class="my-button_s">Log In</button>
+          </Link>
+        </div>
+      </div>
+      <hr class="blank"></hr>
+    </div>
+  );
+};
 
-export default LandingPage
+export default LandingPage;
