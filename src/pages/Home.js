@@ -38,9 +38,7 @@ const Home = () => {
         </nav>
       </div>
       <hr />
-      <div>
       <div className="tab-section">
-        {/* Add the tab buttons */}
         <div className="tab-buttons">
           <button
             className={`tab-button ${activeTab === "prediction" ? "active" : ""}`}
@@ -55,10 +53,10 @@ const Home = () => {
             Timetable
           </button>
         </div>
-        {/* Render the content based on the active tab */}
-        {activeTab === "prediction" && <PredictionModel />} {/* Render the PredictionModel component */}
-        {activeTab === "otherFunctionality" && <TimetableGenerator />} {/* Render the content for other functionality */}
-      </div>
+        <div>
+        {activeTab === "prediction" && <PredictionModel />}
+        {activeTab === "otherFunctionality" && <TimetableGenerator />}
+        </div>
       </div>
     </>
   );

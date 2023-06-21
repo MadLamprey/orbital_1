@@ -33,7 +33,7 @@ const About = () => {
       </div>
       <hr></hr>
       <div class="team-box-section">
-        <div class="team-box" position="absolute" left="50%" top="50%">
+        <div class="team-box">
           <h2>About ScoreScope</h2>
         </div>
       </div>
@@ -48,7 +48,8 @@ const About = () => {
               width: "800px",
               fontSize: "20px",
               position: "absolute",
-              left: "25%",
+              left: "22%",
+              marginTop: "100px"
             }}
           >
             ScoreScope is a text classification program that aims to analyse
@@ -60,9 +61,9 @@ const About = () => {
             exam.{" "}
           </Box>
         </div>
-      </div>{" "}
+      </div>
       <br></br>
-      <div margin={"auto"}>
+      <div class="columns">
         <div class="column">
           <h2>Project Poster</h2>
           <img src={poster} class="image" alt="poster" />

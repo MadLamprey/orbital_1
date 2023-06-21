@@ -274,26 +274,30 @@ body {
   border-radius: 50%;
   width: 300px;
   margin-left: 200px;
+  margin-top: 50px;
 }
 
 .pfp2 {
   border-radius: 50%;
   width: 300px;
   margin-right: 200px;
+  margin-top: 50px;
 }
 
 .team-box-section {
   text-align: center;
   align-content: center;
   margin-left: 600px;
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .team-box {
-  width: 300px;
-  height: 80px;
+  position: absolute;
+  left: 39%;
+  top: 30%;
   border: 1px solid white;
   text-align: center;
+  width: 300px;
 }
 
 .tab-buttons {
@@ -328,7 +332,7 @@ body {
 .box-section_1 {
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 70%;
   transform: translate(-50%, -50%);
 }
 
@@ -351,4 +355,8 @@ body {
 
 .timetable td {
   text-align: center;
+}
+
+.columns {
+  margin-top: 300px;
 }
