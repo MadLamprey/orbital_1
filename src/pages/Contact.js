@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./resources/logo_alt.png";
 import { collection, addDoc } from "firebase/firestore";
-import { useState } from "react";
+
 import { db } from "../firebase";
 
 const Contact = () => {
@@ -56,16 +56,16 @@ const Contact = () => {
           </ul>
         </nav>
       </div>
-      <hr></hr>
+      <hr />
       <div class="box-section">
         <div class="box_1">
           <div class="inner-box">
-          <h2 class="box-heading">Contact Us</h2>
+            <h2 class="box-heading">Contact Us</h2>
           </div>
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name">Name</label>
-              <br></br>
+              <br />
               <input
                 type="text"
                 id="name"
@@ -75,10 +75,10 @@ const Contact = () => {
                 class="text-input"
               />
             </div>
-            <br></br>
+            <br />
             <div>
               <label htmlFor="email">Email</label>
-              <br></br>
+              <br />
               <input
                 type="email"
                 id="email"
@@ -88,10 +88,10 @@ const Contact = () => {
                 class="text-input"
               />
             </div>
-            <br></br>
+            <br />
             <div>
               <label htmlFor="message">Message</label>
-              <br></br>
+              <br />
               <textarea
                 id="message"
                 value={message}
@@ -100,7 +100,7 @@ const Contact = () => {
                 class="text-input"
               />
             </div>
-            <br></br>
+            <br />
             <button type="submit" class="my-button">
               Submit
             </button>

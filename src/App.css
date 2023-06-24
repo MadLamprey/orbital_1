@@ -316,17 +316,17 @@ body {
   margin: 0 10px;
   font-family: "Bebas Neue", sans-serif;
   transition: background-color 0.3s;
-  color: white
+  color: white;
 }
 
 .tab-button:hover {
   background-color: #eaeaea;
-  color: black
+  color: black;
 }
 
 .tab-button.active {
   background-color: #eaeaea;
-  color: black
+  color: black;
 }
 
 .box-section_1 {
@@ -359,4 +359,17 @@ body {
 
 .columns {
   margin-top: 300px;
+}
+
+.logo-image {
+  height: 35px;
+  width: 35px;
+  background: transparent;
+}
+
+.logo-button {
+  height: 50px;
+  width: 50px;
+  margin-top: 10px;
+  margin-left: 10px;
 }

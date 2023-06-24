@@ -1,15 +1,21 @@
-FROM python:3.7
+# Use an official Python runtime as the base image
+FROM python:3.9
 
-## Copy local code to the container image.
+# Set the working directory in the container
 ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
-# Install Packages
-RUN pip install -r requirements.txt
+# Copy the requirements file to the container
+COPY requirements.txt .
 
-# Set an environment variable for the port for 8080
+# Install the Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the Flask app code to the container
+COPY . .
+
 ENV PORT 8080
 
-# Run gunicorn bound to the 8080 port.
+# Set the entrypoint command for the container
 CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 main:app

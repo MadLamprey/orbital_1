@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import googleLogo from "./resources/google_logo.png";
+import githubLogo from "./resources/github_logo.png";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import logo from "./resources/logo_alt.png";
@@ -22,12 +29,32 @@ const Login = () => {
       });
   };
 
+  const handleLoginWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      console.log(user);
+      navigate("/home");
+    } catch (error) {}
+  };
+
+  const handleLoginWithGitHub = async () => {
+    try {
+      const provider = new GithubAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      console.log(user);
+      navigate("/home");
+    } catch (error) {}
+  };
+
   return (
     <main>
       <header class=".header">
         <img src={logo} class="logo" height="70px" alt="logo" />
       </header>
-      <hr></hr>
+      <hr />
       <div class="box-section">
         <div class="box">
           <div class="inner-box">
@@ -41,7 +68,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               class="text-input"
             />
-            <br></br>
+            <br />
             <input
               type="password"
               placeholder="Password"
@@ -52,6 +79,13 @@ const Login = () => {
           </div>
           <button onClick={handleLogin} class="alt-button">
             Login
+          </button>
+          <br />
+          <button onClick={handleLoginWithGoogle} className="logo-button">
+            <img src={googleLogo} alt="Google" className="logo-image" />
+          </button>
+          <button onClick={handleLoginWithGitHub} className="logo-button">
+            <img src={githubLogo} className="logo-image" alt="GitHub" />
           </button>
           <p>{loginStatus}</p>
         </div>

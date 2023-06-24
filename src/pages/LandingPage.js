@@ -24,7 +24,7 @@ const LandingPage = () => {
           </ul>
         </nav>
       </div>
-      <hr></hr>
+      <hr />
       <div class="sec">
         <div class="left-section">
           Make the most of your time and resources.
@@ -44,7 +44,7 @@ const LandingPage = () => {
           </Link>
         </div>
       </div>
-      <hr class="blank"></hr>
+      <hr class="blank" />
     </div>
   );
 };

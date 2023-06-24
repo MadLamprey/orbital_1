@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./resources/logo_alt.png";
 import PredictionModel from "./PredictionModel"; // Import the component for the prediction model functionality
-import TimetableGenerator from "../TimetableGenerator";
+import TimetableGenerator from "./TimetableGenerator";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("prediction"); // State variable to track the active tab
@@ -41,21 +41,25 @@ const Home = () => {
       <div className="tab-section">
         <div className="tab-buttons">
           <button
-            className={`tab-button ${activeTab === "prediction" ? "active" : ""}`}
+            className={`tab-button ${
+              activeTab === "prediction" ? "active" : ""
+            }`}
             onClick={() => toggleTab("prediction")}
           >
             Prediction Model
           </button>
           <button
-            className={`tab-button ${activeTab === "otherFunctionality" ? "active" : ""}`}
+            className={`tab-button ${
+              activeTab === "otherFunctionality" ? "active" : ""
+            }`}
             onClick={() => toggleTab("otherFunctionality")}
           >
             Timetable
           </button>
         </div>
         <div>
-        {activeTab === "prediction" && <PredictionModel />}
-        {activeTab === "otherFunctionality" && <TimetableGenerator />}
+          {activeTab === "prediction" && <PredictionModel />}
+          {activeTab === "otherFunctionality" && <TimetableGenerator />}
         </div>
       </div>
     </>

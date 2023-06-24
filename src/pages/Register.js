@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   fetchSignInMethodsForEmail,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./resources/logo_alt.png";
+import googleLogo from "./resources/google_logo.png";
+import githubLogo from "./resources/github_logo.png";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -40,43 +45,78 @@ const Register = () => {
     }
   };
 
+  const handleRegisterWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      console.log(user);
+      navigate("/home");
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setError(errorCode, errorMessage);
+    }
+  };
+
+  const handleRegisterWithGitHub = async () => {
+    try {
+      const provider = new GithubAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      console.log(user);
+      navigate("/home");
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setError(errorCode, errorMessage);
+    }
+  };
+
   return (
     <div>
-      <header class=".header">
-        <img src={logo} class="logo" height="70px" alt="logo" />
+      <header className="header">
+        <img src={logo} className="logo" height="70px" alt="logo" />
       </header>
-      <hr></hr>
-      <div class="box-section">
-        <div class="box">
-          <div class="inner-box">
-            <h1 class="box-heading">Register</h1>
+      <hr />
+      <div className="box-section">
+        <div className="box">
+          <div className="inner-box">
+            <h1 className="box-heading">Register</h1>
           </div>
-          <div class="form">
+          <div className="form">
             <input
-              class="text-input"
+              className="text-input"
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <br></br>
+            <br />
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              class="text-input"
+              className="text-input"
             />
           </div>
-          <button onClick={handleRegister} class="alt-button">
+          <button onClick={handleRegister} className="alt-button">
             Register
+          </button>
+          <br />
+          <button onClick={handleRegisterWithGoogle} className="logo-button">
+            <img src={googleLogo} alt="Google" className="logo-image" />
+          </button>
+          <button onClick={handleRegisterWithGitHub} className="logo-button">
+            <img src={githubLogo} className="logo-image" alt="GitHub" />
           </button>
           <br />
           {error && (
             <p>
               {error}
-              <br></br>
-              <Link to="/login" class="link-1">
+              <br />
+              <Link to="/login" className="link-1">
                 Log In instead
               </Link>
             </p>
