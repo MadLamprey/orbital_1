@@ -21,6 +21,7 @@ const Login = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        auth.updateCurrentUser(userCredential)
         navigate("/home");
         setLoginStatus("Logged in successfully");
       })

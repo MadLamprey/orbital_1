@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./resources/logo_alt.png";
 import { collection, addDoc } from "firebase/firestore";
-
 import { db } from "../firebase";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [sendStatus, setSendStatus] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,12 +21,35 @@ const Contact = () => {
         message,
       });
 
+      setSendStatus("Message sent successfully!");
+      await sendEmailCopy(); // Send email copy to the user
+
       setName("");
       setEmail("");
       setMessage("");
-      setSendStatus("Message sent successfully!");
     } catch (error) {
-      setSendStatus("Error sending message:" + error);
+      setSendStatus("Error sending message: " + error);
+    }
+  };
+
+  const sendEmailCopy = async () => {
+    try {
+      const templateParams = {
+        to_email: email,
+        from_name: "ScoreScope",
+        message_body: message,
+      };
+
+      await emailjs.send(
+        "service_3xymeno",
+        "template_dmhj8tj",
+        templateParams,
+        "8pcuQcfo4-Jz8osV9"
+      );
+
+      console.log("Email sent to user!");
+    } catch (error) {
+      console.error("Error sending email to user:", error);
     }
   };
 
@@ -58,7 +80,7 @@ const Contact = () => {
       </div>
       <hr />
       <div class="box-section">
-        <div class="box_1">
+        <div class="box_1" style={{ height: "100%", resize: "vertical" }}>
           <div class="inner-box">
             <h2 class="box-heading">Contact Us</h2>
           </div>
@@ -98,6 +120,7 @@ const Contact = () => {
                 onChange={(e) => setMessage(e.target.value)}
                 required
                 class="text-input"
+                style={{ height: "100%", resize: "vertical" }}
               />
             </div>
             <br />

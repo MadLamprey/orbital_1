@@ -17,6 +17,7 @@ body {
   font-family: "Inter", sans-serif;
   color: white;
   background-image: url("/src/pages/resources/dark-wavy-lines-gradient-blend-abstract-background-with-wave-line-effect-can-use-for-poster-business-banner-flyer-advertisement-brochure-catalog-web-site-website-presentation-book-cover-free-vector.jpg");
+  background-size: cover;
 }
 
 .navbar {
@@ -88,10 +89,8 @@ body {
 }
 
 .box-section {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
 }
 
 .small-box-section {
@@ -149,8 +148,9 @@ body {
 }
 
 .right-section {
-  margin-left: 250px;
+  flex-grow: 2;
   margin-top: 75px;
+  align-items: right;
 }
 
 .link-1 {
@@ -261,8 +261,47 @@ body {
 }
 
 .column {
-  float: left;
-  width: 50%;
+  text-align: center;
+  flex-basis: calc(50% - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column-1 {
+  text-align: center;
+  flex-basis: calc(50% - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column img {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.column figcaption {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.column div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.column a {
+  margin: 0 5px;
+  color: white;
+  font-size: 24px;
 }
 
 .video {
@@ -270,31 +309,25 @@ body {
   width: 500px;
 }
 
-.pfp1 {
-  border-radius: 50%;
-  width: 300px;
-  margin-left: 200px;
-  margin-top: 50px;
-}
-
-.pfp2 {
-  border-radius: 50%;
-  width: 300px;
-  margin-right: 200px;
-  margin-top: 50px;
-}
-
 .team-box-section {
-  text-align: center;
-  align-content: center;
-  margin-left: 600px;
-  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.team-members-container {
+  display: flex;
+  justify-content: center;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .team-box {
-  position: absolute;
-  left: 39%;
-  top: 30%;
   border: 1px solid white;
   text-align: center;
   width: 300px;
@@ -330,10 +363,9 @@ body {
 }
 
 .box-section_1 {
-  position: absolute;
+  position:absolute;
   left: 50%;
-  top: 70%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
 }
 
 .timetable {
@@ -358,7 +390,10 @@ body {
 }
 
 .columns {
-  margin-top: 300px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow columns to wrap to the next row if needed */
+  margin-top: 100px;
 }
 
 .logo-image {
@@ -373,3 +408,34 @@ body {
   margin-top: 10px;
   margin-left: 10px;
 }
+
+.pie-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Styles for each individual pie chart */
+.pie-chart {
+  padding: 20px;
+  flex: 1;
+}
+
+.chart-box {
+  padding: 20px;
+  margin: 20px;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  width: 500px;
+}
+
+.content-box {
+  padding: 20px;
+  margin: 20px;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  font-size: 23px;
+  width: 700px;
+}
+
+

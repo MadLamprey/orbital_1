@@ -44,7 +44,7 @@ def calculate_module_workload(module):
 
 # Function to fetch timetable data for a module
 def fetch_timetable_data(module_code):
-    url = f"{API_BASE_URL}2022-2023/modules/{module_code}.json"
+    url = f"{API_BASE_URL}2023-2024/modules/{module_code}.json"
     response = requests.get(url)
     if response.status_code == 200:
         res = response.json()
@@ -158,7 +158,7 @@ def get_time_slots(starttime, total_hours):
     return time_slots
 
 def fetch_exam_dates(module_code):
-    url = f"{API_BASE_URL}2022-2023/modules/{module_code}.json"
+    url = f"{API_BASE_URL}2023-2024/modules/{module_code}.json"
     response = requests.get(url)
     if response.status_code == 200:
         try:
@@ -218,7 +218,7 @@ def get_timetable_data_1(days, time_slots, total_hours):
 def create_timetable(time_slots, timetable, modules, total_hours, study_schedule):
     days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
     table = []
-    
+    print(timetable)
     # Create table header
     header = ['Time Slots'] + days_of_week
     table.append(header)
@@ -244,7 +244,7 @@ def create_timetable(time_slots, timetable, modules, total_hours, study_schedule
 
 def get_exam_table(modules, exam_dates):
     exam_table = []
-    current_date = date(2022, 6, 22)
+    current_date = date.today()
     
     for module in modules:
         module_code = module['moduleCode']
@@ -412,7 +412,8 @@ def analyze_questions():
     result = count_elements(all_topics)
     count = result.values()
     labels = result.keys()
-
+    piecount = list(count)
+    pielabels = list(labels)
     plt.pie(count, labels=labels, autopct='%1.1f%%')
     plt.title("Analysis of questions you entered")
 
@@ -429,7 +430,8 @@ def analyze_questions():
     result2 = count_elements(topics)
     count = result2.values()
     labels = result2.keys()
-
+    piecount1 = list(count)
+    pielabels1 = list(labels)
     plt.pie(count, labels=labels, autopct='%1.1f%%')
     plt.title("Analysis of previous year questions")
 
@@ -441,17 +443,20 @@ def analyze_questions():
     # Convert bytes to base64 encoded strings
     chart1_base64 = base64.b64encode(chart1_bytes.getvalue()).decode('utf-8')
     chart2_base64 = base64.b64encode(chart2_bytes.getvalue()).decode('utf-8')
-
+    
     # Generate the analysis text
     analysis_text = []
     for key, value in result.items():
         percentage = (value / sum(result.values())) * 100
         analysis_text.append(f"Looks like you need to study {key.upper()} more! The percentage is {percentage}%")
-
+    pie_data_list = [{'name': label, 'value': count} for label, count in zip(pielabels, piecount)]
+    pie_data_list_1 = [{'name': label, 'value': count} for label, count in zip(pielabels1, piecount1)]
     return jsonify({
         'analysis': analysis_text,
         'chart1': chart1_base64,
-        'chart2': chart2_base64
+        'chart2': chart2_base64,
+        'piedata': pie_data_list,
+        'piedata1': pie_data_list_1
     })
 
 

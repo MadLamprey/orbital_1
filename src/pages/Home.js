@@ -1,16 +1,26 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
 import logo from "./resources/logo_alt.png";
-import PredictionModel from "./PredictionModel"; // Import the component for the prediction model functionality
+import PredictionModel from "./PredictionModel";
 import TimetableGenerator from "./TimetableGenerator";
+import { auth } from "../firebase";
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState("prediction"); // State variable to track the active tab
-
-  // Function to toggle between tabs
+  const [user, setUser] = useState(null);
+  const [activeTab, setActiveTab] = useState("prediction");
+  useEffect(() => {
+    // Check if the user is already authenticated
+    const user = auth.currentUser;
+    if (user) {
+      setUser(user);
+    } else {
+      setUser(null);
+    }
+  }, []);
   const toggleTab = (tab) => {
     setActiveTab(tab);
   };
+  console.log(user)
 
   return (
     <>

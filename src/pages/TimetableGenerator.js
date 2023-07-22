@@ -18,6 +18,12 @@ const TimetableGenerator = () => {
   const [examDates, setExamDates] = useState([]);
   const [show, setShow] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [error, setError] = useState("");
+
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+  };
 
   const handleStartTimeChange = (event) => {
     setStartTime(event.target.value);
@@ -59,33 +65,40 @@ const TimetableGenerator = () => {
   };
 
   const generateTable = async () => {
-    const response = await fetch(
-      "https://backend-scorescope-nulcnhp3eq-el.a.run.app/generate",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          startTime,
-          totalHours,
-          modules: moduleData.map((module) => ({
-            moduleCode: module.moduleCode,
-            lessons: module.lessons.map((lesson) => ({
-              lessonType: lesson.lessonType,
-              classNumber: lesson.classNumber,
+    try {
+      setError("");
+      const response = await fetch(
+        "http://127.0.0.1:8080/generate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            startTime,
+            totalHours,
+            modules: moduleData.map((module) => ({
+              moduleCode: module.moduleCode,
+              lessons: module.lessons.map((lesson) => ({
+                lessonType: lesson.lessonType,
+                classNumber: lesson.classNumber,
+              })),
             })),
-          })),
-        }),
+          }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
       }
-    );
-
-    const data = await response.json();
-    setTableData(data.table);
-    setTotalStudyTime(data.totalStudyTime);
-    setStudySchedule(data.studySchedule);
-    setExamDates(data.examDates);
-    setShow(true);
+      const data = await response.json();
+      setTableData(data.table);
+      setTotalStudyTime(data.totalStudyTime);
+      setStudySchedule(data.studySchedule);
+      setExamDates(data.examDates);
+      setShow(true);
+    } catch (error) {
+        setError("Failed to fetch data from the backend. Ensure fields have been filled correctly");
+    }
   };
 
   const PDFDocument = () => {
@@ -124,6 +137,7 @@ const TimetableGenerator = () => {
       </Document>
     );
   };
+
 
   return (
     <div>
@@ -225,7 +239,7 @@ const TimetableGenerator = () => {
           </ul>
         </>
       )}
-
+      {error && <p>{error}</p>}
       {show && (
         <>
           <hr />
@@ -235,12 +249,30 @@ const TimetableGenerator = () => {
               {tableData.map((row, index) => (
                 <tr key={index}>
                   {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell}</td>
+                    <td key={cellIndex}>
+                      {editMode && index > 0 && cellIndex > 0 && !cell.includes("(") ? (
+                        <input
+                          type="text"
+                          value={cell}
+                          onChange={(event) => {
+                            const updatedTableData = [...tableData];
+                            updatedTableData[index][cellIndex] =
+                              event.target.value;
+                            setTableData(updatedTableData);
+                          }}
+                        />
+                      ) : (
+                        cell
+                       
+                      )}</td>
                   ))}
                 </tr>
               ))}
             </tbody>
           </table>
+          <button onClick={toggleEditMode} className="my-button_s">
+            {editMode ? "Finish Editing" : "Edit Timetable"}
+          </button>
         </>
       )}
 
