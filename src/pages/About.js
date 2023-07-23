@@ -46,13 +46,13 @@ const About = () => {
             use of this program to be able to narrow down their syllabus to only
             a few topics that they can revise in the time leading up to the
             exam.{" "}
-            </div>
+          </div>
         </div>
       </div>
       <div class="columns">
         <div class="column-1">
           <h2>Project Poster</h2>
-          <img src={poster} class="image" alt="poster"/>
+          <img src={poster} class="image" alt="poster" />
         </div>
         <div class="column">
           <h2>Project Video</h2>

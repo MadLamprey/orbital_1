@@ -1,26 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./resources/logo_alt.png";
-import { auth } from "../firebase";
 
 const LandingPage = () => {
-
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // Listen for changes in authentication state
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-
-    // Clean up the listener when the component unmounts
-    return () => unsubscribe();
-  }, []);
-
   return (
     <div>
       <div class="header">

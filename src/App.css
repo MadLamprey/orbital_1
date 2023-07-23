@@ -363,7 +363,7 @@ body {
 }
 
 .box-section_1 {
-  position:absolute;
+  position: absolute;
   left: 50%;
   transform: translate(-50%);
 }
@@ -437,5 +437,3 @@ body {
   font-size: 23px;
   width: 700px;
 }
-
-

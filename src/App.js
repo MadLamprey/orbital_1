@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
@@ -8,33 +8,10 @@ import About from "./pages/About";
 import Team from "./pages/Team";
 import Contact from "./pages/Contact";
 import "./App.css";
-import { auth } from "./firebase";
 
 // Import other components...
 
 function App() {
-
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // Listen for changes in authentication state
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-
-    // Clean up the listener when the component unmounts
-    return () => unsubscribe();
-  }, []);
-
-
-  const redirect = () => {
-    return user ? <Home /> : <Register />
-  }
-
   return (
     <Router>
       <div>

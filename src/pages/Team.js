@@ -42,11 +42,28 @@ const Team = () => {
           <img src={img1} className="pfp1" alt="Aditya Misra" />
           <figcaption>Aditya Misra</figcaption>
           <figcaption>Y1 CS Student</figcaption>
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
-            <a href="https://www.instagram.com/_adityamisra_/" target="_blank" rel="noopener noreferrer">
-              <FaInstagram size={24} style={{ margin: "0 5px", color: "white" }} />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "10px",
+            }}
+          >
+            <a
+              href="https://www.instagram.com/_adityamisra_/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram
+                size={24}
+                style={{ margin: "0 5px", color: "white" }}
+              />
             </a>
-            <a href="https://github.com/MadLamprey" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/MadLamprey"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaGithub size={24} style={{ margin: "0 5px", color: "white" }} />
             </a>
           </div>
@@ -55,11 +72,28 @@ const Team = () => {
           <img src={img2} className="pfp2" alt="Aarav Rawal" />
           <figcaption>Aarav Rawal</figcaption>
           <figcaption>Y1 Comp Engineering Student</figcaption>
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
-            <a href="https://www.instagram.com/aaravrawal_/" target="_blank" rel="noopener noreferrer">
-              <FaInstagram size={24} style={{ margin: "0 5px", color: "white" }} />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "10px",
+            }}
+          >
+            <a
+              href="https://www.instagram.com/aaravrawal_/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram
+                size={24}
+                style={{ margin: "0 5px", color: "white" }}
+              />
             </a>
-            <a href="https://github.com/aaravrawal" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/aaravrawal"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaGithub size={24} style={{ margin: "0 5px", color: "white" }} />
             </a>
           </div>

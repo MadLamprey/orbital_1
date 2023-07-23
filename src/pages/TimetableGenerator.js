@@ -20,6 +20,19 @@ const TimetableGenerator = () => {
   const [showButton, setShowButton] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [error, setError] = useState("");
+  const [sendEmailReminders, setSendEmailReminders] = useState(false);
+  const [sessionNotStarted, setSessionNotStarted] = useState(false);
+
+  const handleEmailReminderToggle = () => {
+    if (sessionNotStarted && !sendEmailReminders) {
+      alert(
+        "Session has not yet started. Email reminders will only be sent once term starts."
+      );
+      setSendEmailReminders(!sendEmailReminders);
+    } else {
+      setSendEmailReminders(!sendEmailReminders);
+    }
+  };
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
@@ -68,7 +81,7 @@ const TimetableGenerator = () => {
     try {
       setError("");
       const response = await fetch(
-        "http://127.0.0.1:8080/generate",
+        "https://timetable-server-nulcnhp3eq-el.a.run.app/generate",
         {
           method: "POST",
           headers: {
@@ -84,6 +97,7 @@ const TimetableGenerator = () => {
                 classNumber: lesson.classNumber,
               })),
             })),
+            sendEmailReminders,
           }),
         }
       );
@@ -91,13 +105,18 @@ const TimetableGenerator = () => {
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
+      if (data.message === "Session Not Started") {
+        setSessionNotStarted(true);
+      }
       setTableData(data.table);
       setTotalStudyTime(data.totalStudyTime);
       setStudySchedule(data.studySchedule);
       setExamDates(data.examDates);
       setShow(true);
     } catch (error) {
-        setError("Failed to fetch data from the backend. Ensure fields have been filled correctly");
+      setError(
+        "Failed to fetch data from the backend. Ensure fields have been filled correctly"
+      );
     }
   };
 
@@ -137,7 +156,6 @@ const TimetableGenerator = () => {
       </Document>
     );
   };
-
 
   return (
     <div>
@@ -250,7 +268,10 @@ const TimetableGenerator = () => {
                 <tr key={index}>
                   {row.map((cell, cellIndex) => (
                     <td key={cellIndex}>
-                      {editMode && index > 0 && cellIndex > 0 && !cell.includes("(") ? (
+                      {editMode &&
+                      index > 0 &&
+                      cellIndex > 0 &&
+                      !cell.includes("(") ? (
                         <input
                           type="text"
                           value={cell}
@@ -263,13 +284,14 @@ const TimetableGenerator = () => {
                         />
                       ) : (
                         cell
-                       
-                      )}</td>
+                      )}
+                    </td>
                   ))}
                 </tr>
               ))}
             </tbody>
           </table>
+
           <button onClick={toggleEditMode} className="my-button_s">
             {editMode ? "Finish Editing" : "Edit Timetable"}
           </button>
@@ -291,6 +313,15 @@ const TimetableGenerator = () => {
               loading ? "Loading..." : "Download Timetable as PDF"
             }
           </PDFDownloadLink>
+          <br></br>
+          <label>
+            <input
+              type="checkbox"
+              checked={sendEmailReminders}
+              onChange={handleEmailReminderToggle}
+            />
+            Send Email Reminders
+          </label>
         </>
       )}
 

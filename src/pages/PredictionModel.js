@@ -10,7 +10,6 @@ const PredictionModel = () => {
   const [boxHeight] = useState("auto");
   const [pieData, setPieData] = useState([]);
   const [pieData1, setPieData1] = useState([]);
-  const [isLoading, setIsLoading] = useState([]);
 
   const addQuestionField = () => {
     setQuestions([...questions, ""]);
@@ -24,15 +23,18 @@ const PredictionModel = () => {
 
   const handlePrediction = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8080/analyze", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          questions,
-        }),
-      });
+      const response = await fetch(
+        "https://timetable-server-nulcnhp3eq-el.a.run.app/analyze",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            questions,
+          }),
+        }
+      );
 
       const data = await response.json();
       setAnalysis(data.analysis);
@@ -40,8 +42,6 @@ const PredictionModel = () => {
       setPieData1(data.piedata1);
     } catch (error) {
       console.error("Error:", error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -81,7 +81,7 @@ const PredictionModel = () => {
     "#FF4B4B",
   ];
 
-  const [getPiePng, { ref: pieRef}] = useCurrentPng();
+  const [getPiePng, { ref: pieRef }] = useCurrentPng();
   const handlePieDownload = useCallback(async () => {
     const png = await getPiePng();
     if (png) {
@@ -89,7 +89,7 @@ const PredictionModel = () => {
     }
   }, [getPiePng]);
 
-  const [getPiePng1, { ref: pieRef1}] = useCurrentPng();
+  const [getPiePng1, { ref: pieRef1 }] = useCurrentPng();
   const handlePieDownload1 = useCallback(async () => {
     const png = await getPiePng1();
     if (png) {
@@ -168,10 +168,7 @@ const PredictionModel = () => {
                       verticalAlign="middle"
                     />
                   </PieChart>
-                  <button
-                    onClick={handlePieDownload}
-                    className="alt-button"
-                  >
+                  <button onClick={handlePieDownload} className="alt-button">
                     <MdFileDownload />
                   </button>
                 </div>
@@ -206,10 +203,7 @@ const PredictionModel = () => {
                       verticalAlign="middle"
                     />
                   </PieChart>
-                  <button
-                    onClick={handlePieDownload1}
-                    className="alt-button"
-                  >
+                  <button onClick={handlePieDownload1} className="alt-button">
                     <MdFileDownload />
                   </button>
                 </div>
